@@ -1,4 +1,4 @@
-package sample.cafekiosk.spring.api.service.product.response;
+package sample.cafekiosk.spring.api.controller.product.response;
 
 import lombok.Builder;
 import sample.cafekiosk.spring.domain.product.Product;
