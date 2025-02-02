@@ -3,10 +3,8 @@ package sample.cafekiosk.spring.domain.order;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import sample.cafekiosk.spring.api.controller.product.response.ProductResponse;
 import sample.cafekiosk.spring.domain.BaseEntity;
 import sample.cafekiosk.spring.domain.orderProduct.OrderProduct;
-import sample.cafekiosk.spring.domain.orderProduct.OrderProductRepository;
 import sample.cafekiosk.spring.domain.product.Product;
 
 import java.time.LocalDateTime;

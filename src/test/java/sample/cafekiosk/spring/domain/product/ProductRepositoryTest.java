@@ -10,8 +10,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
-import static org.junit.jupiter.api.Assertions.*;
-import static sample.cafekiosk.spring.domain.product.ProductSellingType.*;
+import static sample.cafekiosk.spring.domain.product.ProductSellingStatus.*;
 import static sample.cafekiosk.spring.domain.product.ProductType.HANDMADE;
 
 @ActiveProfiles("test")
@@ -104,6 +103,39 @@ class ProductRepositoryTest {
                         tuple("001", "아메리카노", SELLING),
                         tuple("002", "카페라떼", HOLD)
                 );
+    }
+
+    @DisplayName("findLastestProductNumber의 결과는 마지막에 저장된 상품의 번호와 일치한다.")
+    @Test
+    void findLatestProduct() {
+        // given
+        String targetProductNumber = "003";
+
+        Product product1 = Product.createProduct("001", "아메리카노", 4000, HANDMADE, SELLING);
+        Product product2 = Product.createProduct("002", "카페라떼", 4500, HANDMADE, HOLD);
+        Product product3 = Product.createProduct("003", "팥빙수", 7000, HANDMADE, STOP_SELLING);
+
+        productRepository.saveAll(List.of(product1, product2, product3));
+
+        // when
+        String latestProductNumber = productRepository.findLatestProductNumber();
+
+        // then
+        assertThat(latestProductNumber).isEqualTo(targetProductNumber);
+    }
+
+
+    @DisplayName("등록된 상품이 하나도 없을 경우, 가장 최근 상품 번호를 조회하면 null을 반환한다.")
+    @Test
+    void findLatestProductWithNoProduct() {
+        // given
+        String targetProductNumber = null;
+
+        // when
+        String latestProductNumber = productRepository.findLatestProductNumber();
+
+        // then
+        assertThat(latestProductNumber).isEqualTo(targetProductNumber);
     }
 
 }

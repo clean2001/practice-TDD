@@ -25,14 +25,24 @@ public class Product extends BaseEntity {
     private ProductType type;
 
     @Enumerated(EnumType.STRING)
-    private ProductSellingType sellingStatus;
+    private ProductSellingStatus sellingStatus;
 
     @Builder
-    public Product(String productNumber, String name, int price, ProductType type, ProductSellingType sellingStatus) {
+    public Product(String productNumber, String name, int price, ProductType type, ProductSellingStatus sellingStatus) {
         this.productNumber = productNumber;
         this.name = name;
         this.price = price;
         this.type = type;
         this.sellingStatus = sellingStatus;
     }
+
+    public static Product createProduct(String productNumber, String name, int price, ProductType type, ProductSellingStatus sellingStatus) {
+        return Product.builder()
+                .productNumber(productNumber)
+                .name(name).price(price)
+                .type(type)
+                .sellingStatus(sellingStatus)
+                .build();
+    }
+
 }

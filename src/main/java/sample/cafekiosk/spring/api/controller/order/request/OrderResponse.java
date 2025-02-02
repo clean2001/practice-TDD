@@ -3,9 +3,8 @@ package sample.cafekiosk.spring.api.controller.order.request;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import sample.cafekiosk.spring.api.controller.product.response.ProductResponse;
+import sample.cafekiosk.spring.api.controller.product.dto.response.ProductResponse;
 import sample.cafekiosk.spring.domain.order.Order;
-import sample.cafekiosk.spring.domain.order.OrderStatus;
 
 import java.time.LocalDateTime;
 import java.util.List;
