@@ -28,7 +28,7 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final StockRepository stockRepository;
 
-    public OrderResponse createOrder(OrderCreateRequest request, LocalDateTime registeredDate) {
+    public OrderResponse  createOrder(OrderCreateRequest request, LocalDateTime registeredDate) {
         List<String> productNumbers = request.getProductNumbers(); // 001, 001
         List<Product> products = findProductBy(productNumbers);
 
