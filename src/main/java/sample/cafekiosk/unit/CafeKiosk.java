@@ -42,7 +42,7 @@ public class CafeKiosk {
     }
 
     public Order createOrder(LocalDateTime localDateTime) { // 현재 시간을 파라미터로 받기
-        LocalTime currentTime = localDateTime.toLocalTime(); // 시간 가져오기
+        LocalTime currentTime = localDateTime.toLocalTime();
 
         if(currentTime.isBefore(SHOP_OPEN_TIME) || currentTime.isAfter(SHOP_CLOSE_TIME)) {
              throw new IllegalArgumentException("주문 가능 시간이 아닙니다.");
